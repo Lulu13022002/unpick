@@ -187,7 +187,7 @@ public abstract class ValidatingUnpickV3Visitor extends ForwardingUnpickV3Visito
 				}
 
 				if (!compatible) {
-					errors.add(new UnpickSyntaxException("Target of type " + expectedType.getInternalName() + " declares group " + groupName + " of incompatible type " + DataTypeUtils.getTypeName(actualType)));
+					errors.add(new UnpickSyntaxException("Target of type " + expectedType.getClassName() + " declares group " + groupName + " of incompatible type " + DataTypeUtils.getTypeName(actualType)));
 				}
 			}
 		});

@@ -68,7 +68,7 @@ public class TestValidation {
 					org.objectweb.asm.Opcodes.ACC_ABSTRACT
 				target_field org.objectweb.asm.tree.ClassNode name Ljava/lang/String; access_flags
 				""",
-				"Target of type java/lang/String declares group access_flags of incompatible type int");
+				"Target of type java.lang.String declares group access_flags of incompatible type int");
 	}
 
 	@Test
@@ -80,7 +80,7 @@ public class TestValidation {
 				target_method org.objectweb.asm.Handle getOwner ()Ljava/lang/String;
 					return access_flags
 				""",
-				"Target of type java/lang/String declares group access_flags of incompatible type int");
+				"Target of type java.lang.String declares group access_flags of incompatible type int");
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class TestValidation {
 				target_method org.objectweb.asm.Handle <init> (ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)V
 					param 1 access_flags
 				""",
-				"Target of type java/lang/String declares group access_flags of incompatible type int");
+				"Target of type java.lang.String declares group access_flags of incompatible type int");
 	}
 
 	@Test
@@ -199,18 +199,18 @@ public class TestValidation {
 	}
 
 	@Test
-	public void testFieldWidenTypeUsage() throws IOException {
-		/*testValidation("""
+	public void testWidenTypeUsageTargetField() throws IOException {
+		testValidation("""
 				group String name
 					java.lang.constant.ConstantDescs.INIT_NAME
-				target_field org.example.Main field Ljava/lang/CharSequence; name
+				target_field java.lang.StackFrameInfo memberName Ljava/lang/Object; name
 				""",
 				null
-		);*/ // todo find example
+		);
 	}
 
 	@Test
-	public void testMethodParamWidenTypeUsage() throws IOException {
+	public void testWidenTypeUsageTargetMethodParam() throws IOException {
 		testValidation("""
 				group String name
 					java.lang.constant.ConstantDescs.INIT_NAME
@@ -222,7 +222,7 @@ public class TestValidation {
 	}
 
 	@Test
-	public void testMethodReturnWidenTypeUsage() throws IOException {
+	public void testWidenTypeUsageTargetMethodReturn() throws IOException {
 		testValidation("""
 				group String name
 					java.lang.constant.ConstantDescs.INIT_NAME
